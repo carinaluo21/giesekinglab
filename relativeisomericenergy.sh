@@ -22,21 +22,25 @@ done < "forrelativeisomericenergy.out"
 # Overwrite the original file with the modified content
 mv "tmp" "forrelativeisomericenergy.out"
 
-#Find the lowest energy isomer for each cluster size
+declare -A seen
+
 while read -r line; do
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
+
     if [[ ${seen["$atom_num"]} ]]; then
-        echo "$disp_energy is not the lowest disp energy for $atom_num"
-        if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
-            min_disp_energy=$disp_energy
-            echo "the new minimum disp energy for $atom_num is $min_disp_energy"
+        echo "$disp_energy has been seen before"
+        
+        if (( $(awk -v disp_energy="$disp_energy" -v min_disp_energy="${seen["$atom_num"]}" 'BEGIN { print (disp_energy < min_disp_energy) ? 1 : 0 }') )); then
+            seen["$atom_num"]=$disp_energy
+            echo "the new minimum disp energy for $atom_num is $disp_energy"
         fi
     else
         seen["$atom_num"]=$disp_energy
         echo "$atom_num has not been seen before, initial value is $disp_energy"
     fi
 done < "forrelativeisomericenergy.out"
+
 
 #isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
 #echo "$disp_energy minus $min_disp_energy is $isom_energy"
