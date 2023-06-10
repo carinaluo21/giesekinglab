@@ -33,12 +33,11 @@ while read -r line; do
         elif (( $(echo "$disp_energy > ${seen["$atom_num"]}" | bc -l) )); then
             continue
         else
-            echo "
+            echo "There is an error"
+        fi
+    else
+        seen["$atom_num"]=$disp_energy
     fi
-  else
-    # otherwise, initialize the minimum value for this field
-    seen["$atom_num"]=$disp_energy
-  fi
   echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> "tmp"
 done < "forrelativeisomericenergy.out"
 
