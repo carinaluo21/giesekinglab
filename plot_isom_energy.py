@@ -13,7 +13,7 @@ with open(data_file, 'r') as file:
         line = line.strip().split()
         atom_num = line[0]
         charge = line[1]
-        isom_energy = line[2]
+        isom_energy = float(line[2])
         if charge == "1":
             pos_atom_num.append(atom_num)
             pos_isom_energy.append(isom_energy)
