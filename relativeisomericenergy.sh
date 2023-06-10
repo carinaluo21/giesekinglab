@@ -16,11 +16,9 @@ tmp_file=$(mktemp)
 while IFS= read -r line; do
     logfile=$(echo "$line" | cut -d' ' -f1)
     # Check if the line already exists in the temporary file
-    if grep -q "^$logfile " "$tmp_file"; then
+    if grep -q "$logfile" "$tmp_file"; then
         continue  # Skip duplicate lines
     else
-        # Append the line to the temporary file
-        logfile=$(echo "$line" | cut -d' ' -f1)
         disp_energy=$(echo "$line" | cut -d' ' -f2)
         atom_num=$(echo "$logfile" | cut -c3)
         echo "$logfile" "$atom_num" "$disp_energy" >> "$tmp_file"
