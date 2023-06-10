@@ -24,7 +24,7 @@ with open(data_file, 'r') as file:
             neg_atom_num.append(atom_num)
             neg_isom_energy.append(isom_energy)
         else:
-            echo "error"
+            print("Error")
 
 # Create scatter plot
 plt.scatter(pos_atom_num, pos_isom_energy, color="red", label="cationic")
