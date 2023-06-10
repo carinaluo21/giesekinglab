@@ -27,9 +27,9 @@ while read -r line; do
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
     if [[ ${seen["$atom_num"]} ]]; then
-        echo "$atom_num has been seen before"
+        echo "$disp_energy is not the lowest disp energy for $atom_num"
         if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
-            seen["$atom_num"]=$min_disp_energy
+            $min_disp_energy=seen["$atom_num"]
             echo "the new minimum disp energy for $atom_num is $min_disp_energy"
             isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
             echo "$disp_energy minus $min_disp_energy is $isom_energy"
