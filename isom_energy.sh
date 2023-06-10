@@ -36,7 +36,7 @@ while read -r line; do
         
         if (( $(awk -v disp_energy="$disp_energy" -v min_disp_energy="${seen["$key"]}" 'BEGIN { print (disp_energy < min_disp_energy) ? 1 : 0 }') )); then
             seen["$key"]=$disp_energy
-            echo "the new minimum disp energy for $atom_num is $disp_energy"
+            echo "the new minimum disp energy for $key is $disp_energy"
         fi
     else
         seen["$key"]=$disp_energy
@@ -50,6 +50,7 @@ while read -r line; do
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
     isom_energy=$(echo "$disp_energy - ${seen["$key"]}" | bc)
+    echo "$disp_energy - ${seen["$key"]}"
     echo $atom_num $charge $isom_energy >> "relativeisomericenergy.out"
 done < "forrelativeisomericenergy.out"
 
