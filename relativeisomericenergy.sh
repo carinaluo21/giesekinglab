@@ -26,7 +26,7 @@ mv "tmp" "forrelativeisomericenergy.out"
 while read -r line; do
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
-    if [[ ${seen["$field2"]} ]]; then
+    if [[ ${seen["$atom_num"]} ]]; then
         if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
             seen["$atom_num"]=$min_disp_energy
             isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
