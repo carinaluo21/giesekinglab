@@ -32,7 +32,7 @@ while read -r line; do
     key="$atom_num:$charge"
 
     if [[ ${seen["$key"]} ]]; then
-        echo "$key has been seen before"
+        echo "$key has been seen before, current value is ${seen["$key"]}"
         
         if (( $(awk -v disp_energy="$disp_energy" -v min_disp_energy="${seen["$key"]}" 'BEGIN { print (disp_energy < min_disp_energy) ? 1 : 0 }') )); then
             seen["$key"]=$disp_energy
