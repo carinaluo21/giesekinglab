@@ -27,12 +27,16 @@ while read -r line; do
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
     if [[ ${seen["$atom_num"]} ]]; then
+        echo "$atom_num has been seen before"
         if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
             seen["$atom_num"]=$min_disp_energy
+            echo "the new minimum disp energy for $atom_num is $min_disp_energy"
             isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
+            echo "$disp_energy minus $min_disp_energy is $isom_energy"
         fi
     else
         seen["$atom_num"]=$disp_energy
+        echo "$atom_num has not been seen before, initial value is $disp_energy"
     fi
   echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> "tmp"
 done < "forrelativeisomericenergy.out"
