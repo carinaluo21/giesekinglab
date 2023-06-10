@@ -34,8 +34,7 @@ tmp_file=$(mktemp)
 while IFS= read -r line; do
         logfile=$(echo "$line" | cut -d' ' -f1)
         atom_num=$(echo "$logfile" | cut -c3)
-        new_line=$(echo "$logfile" | sed "s/$logfile/$logfile $third_char/")
-        echo "$new_line" >> "$tmp_file"
+        echo "$logfile" "$atom_num" >> "$tmp_file"
 done < "$input_file"
 
 #Overwrite contents of the temporary file to the "forrelativeisomericenergy.out" file
