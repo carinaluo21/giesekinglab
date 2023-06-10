@@ -50,7 +50,7 @@ while read -r line; do
     disp_energy=$(echo "$line" | awk '{print $3}')
     isom_energy=$(echo "$disp_energy - ${seen["$key"]}" | bc)
     key="$atom_num:$charge"
-    echo "$disp_energy - ${seen["$key"]}"
+    echo "$disp_energy - ${seen["$key"]} for $key"
     echo $atom_num $charge $isom_energy >> "relativeisomericenergy.out"
 done < "forrelativeisomericenergy.out"
 
