@@ -3,6 +3,27 @@
 #Find the equilibrium geometries contained in the "fordisplacementenergy.out" file and print them to the "forrelativeisomericenergy.out" file
 grep "eq.log" "fordisplacementenergy.out" > "forrelativeisomericenergy.out"
 
+input_file="forrelativeisomericenergy.out"
+output_file="forrelativeisomericenergy.out"
+
+#Make a temporary file
+tmp_file=$(mktemp)
+
+#Remove any duplicates of each equilibrium geometry
+while IFS= read -r line; do
+    # Check if the line already exists in the temporary file
+    if grep -Fxq "$line" "$tmp_file"; then
+        continue  # Skip duplicate lines
+    else
+        # Append the line to the temporary file
+        echo "$line" >> "$tmp_file"
+    fi
+
+done < "$input_file"
+
+# Overwrite the original file with the modified content
+mv "$tmp_file" "$output_file"
+
 #Read the file line by line, and save the name of the log file, the number of atoms in the cluster corresponding to that log file, and print a new line containing the log file name and the number of atoms in the cluster to a temporary file
 while IFS= read -r line; do
         first_field=$(echo "$line" | cut -d' ' -f1)
