@@ -45,7 +45,7 @@ done < "forrelativeisomericenergy.out"
 while read -r line; do
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
-    isom_energy=$((disp_energy - ${seen["$atom_num"]}))
+    isom_energy=$(echo "$disp_energy - ${seen["$atom_num"]}" | bc)
     echo $atom_num $isom_energy 
 done < "forrelativeisomericenergy.out"
 
