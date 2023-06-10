@@ -29,7 +29,7 @@ while read -r line; do
     if [[ ${seen["$atom_num"]} ]]; then
         echo "$disp_energy is not the lowest disp energy for $atom_num"
         if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
-            $min_disp_energy=seen["$atom_num"]
+            $min_disp_energy=$disp_energy
             echo "the new minimum disp energy for $atom_num is $min_disp_energy"
             isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
             echo "$disp_energy minus $min_disp_energy is $isom_energy"
