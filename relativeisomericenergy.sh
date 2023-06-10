@@ -22,33 +22,33 @@ done < "forrelativeisomericenergy.out"
 # Overwrite the original file with the modified content
 mv "tmp" "forrelativeisomericenergy.out"
 
+#Find the lowest energy isomer for each cluster size
 while read -r line; do
-  field2=$(echo "$line" | awk '{print $2}')
-  field3=$(echo "$line" | awk '{print $3}')
+  atom_num=$(echo "$line" | awk '{print $2}')
+  disp_energy=$(echo "$line" | awk '{print $3}')
   if [[ ${seen["$field2"]} ]]; then
-    # if so, update the minimum value for this field
-    if (( $(echo "$field3 < ${seen["$field2"]}" | bc -l) )); then
-      seen["$field2"]=$field3
+    if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
+      seen["$atom_num"]=$disp_energy
     fi
   else
     # otherwise, initialize the minimum value for this field
-    seen["$field2"]=$field3
+    seen["$atom_num"]=$disp_energy
   fi
-done < forrelativeisomericenergy.out
+done < "forrelativeisomericenergy.out"
 
-# subtract the minimum value for each field2 from all corresponding lines
+# subtract the minimum value for each cluster size from all clusters of that size
 while read -r line; do
-  # extract second and third fields
-  field2=$(echo "$line" | awk '{print $2}')
-  field3=$(echo "$line" | awk '{print $3}')
+  atom_num=$(echo "$line" | awk '{print $2}')
+  disp_energy=$(echo "$line" | awk '{print $3}')
 
   # subtract the minimum value for this field2 from field3
-  min_val=${seen["$field2"]}
-  new_val=$(echo "$field3 - $min_val" | bc -l)
+  min_disp_energy=${seen["$atom_num"]}
+  isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
 
   # print the modified line
-  echo "$(echo "$line" | awk '{print $1}') $field2 $new_val" >> temp.out
+  echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> tmp
 done < forrelativeisomericenergy.out
+
 mv temp.out relativeisomericenergy.out
+
 sed -i 's/_eq.log//g' relativeisomericenergy.out
-#scp displacementenergy.out carinaluo@hpcc.brandeis.edu:/home/carinaluo/research/groundstategraphs
