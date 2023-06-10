@@ -24,31 +24,24 @@ mv "tmp" "forrelativeisomericenergy.out"
 
 #Find the lowest energy isomer for each cluster size
 while read -r line; do
-  atom_num=$(echo "$line" | awk '{print $2}')
-  disp_energy=$(echo "$line" | awk '{print $3}')
-  if [[ ${seen["$field2"]} ]]; then
-    if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
-      seen["$atom_num"]=$disp_energy
+    atom_num=$(echo "$line" | awk '{print $2}')
+    disp_energy=$(echo "$line" | awk '{print $3}')
+    if [[ ${seen["$field2"]} ]]; then
+        if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
+            seen["$atom_num"]=$min_disp_energy
+            isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
+        elif (( $(echo "$disp_energy > ${seen["$atom_num"]}" | bc -l) )); then
+            continue
+        else
+            echo "
     fi
   else
     # otherwise, initialize the minimum value for this field
     seen["$atom_num"]=$disp_energy
   fi
+  echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> "tmp"
 done < "forrelativeisomericenergy.out"
 
-# subtract the minimum value for each cluster size from all clusters of that size
-while read -r line; do
-  atom_num=$(echo "$line" | awk '{print $2}')
-  disp_energy=$(echo "$line" | awk '{print $3}')
-
-  # subtract the minimum value for this field2 from field3
-  min_disp_energy=${seen["$atom_num"]}
-  isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
-
-  # print the modified line
-  echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> tmp
-done < forrelativeisomericenergy.out
-
-mv temp.out relativeisomericenergy.out
+mv "tmp" "relativeisomericenergy.out"
 
 sed -i 's/_eq.log//g' relativeisomericenergy.out
