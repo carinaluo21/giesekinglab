@@ -34,7 +34,7 @@ while read -r line; do
     if [[ ${seen["$key"]} ]]; then
         echo "$key has been seen before"
         
-        if (( $(awk -v disp_energy="$disp_energy" -v min_disp_energy="${seen["$atom_num"]}" 'BEGIN { print (disp_energy < min_disp_energy) ? 1 : 0 }') )); then
+        if (( $(awk -v disp_energy="$disp_energy" -v min_disp_energy="${seen["$key"]}" 'BEGIN { print (disp_energy < min_disp_energy) ? 1 : 0 }') )); then
             seen["$key"]=$disp_energy
             echo "the new minimum disp energy for $atom_num is $disp_energy"
         fi
