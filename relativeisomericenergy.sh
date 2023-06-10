@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#For relative isomeric energy
 grep "eq.log" "fordisplacementenergy.out" > "forrelativeisomericenergy.out"
 while IFS= read -r line; do
         first_field=$(echo "$line" | cut -d' ' -f1)
