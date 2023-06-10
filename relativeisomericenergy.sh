@@ -14,8 +14,9 @@ tmp_file=$(mktemp)
 
 #Remove any duplicates of each equilibrium geometry and add the number of atoms in each cluster to each unique equilibrium geometry line
 while IFS= read -r line; do
+    logfile=$(echo "$line" | cut -d' ' -f1)
     # Check if the line already exists in the temporary file
-    if grep -Fxq "$line" "$tmp_file"; then
+    if grep -q "^$logfile " "$tmp_file"; then
         continue  # Skip duplicate lines
     else
         # Append the line to the temporary file
