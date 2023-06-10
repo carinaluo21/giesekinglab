@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Make a temporary file
+touch tmp
+
 #Find the equilibrium geometries contained in the input file and print them to the output file
 grep "eq.log" "fordisplacementenergy.out" > "forrelativeisomericenergy.out"
 
