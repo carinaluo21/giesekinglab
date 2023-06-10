@@ -36,12 +36,12 @@ while read -r line; do
         seen["$atom_num"]=$disp_energy
         echo "$atom_num has not been seen before, initial value is $disp_energy"
     fi
-    
-  isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
-  echo "$disp_energy minus $min_disp_energy is $isom_energy"
-  echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> "tmp"
 done < "forrelativeisomericenergy.out"
 
-mv "tmp" "relativeisomericenergy.out"
+#isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
+#echo "$disp_energy minus $min_disp_energy is $isom_energy"
+#echo "$(echo "$line" | awk '{print $1}') $atom_num $isom_energy" >> "tmp"
 
-sed -i 's/_eq.log//g' relativeisomericenergy.out
+#mv "tmp" "relativeisomericenergy.out"
+
+#sed -i 's/_eq.log//g' relativeisomericenergy.out
