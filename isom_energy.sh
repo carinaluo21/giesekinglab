@@ -47,9 +47,9 @@ echo "${seen[@]}"
 while read -r line; do
     charge=$(echo "$line" | awk '{print $1}' | awk '{print substr($0, 5, 1)}')
     atom_num=$(echo "$line" | awk '{print $2}')
+    key="$atom_num:$charge"
     disp_energy=$(echo "$line" | awk '{print $3}')
     isom_energy=$(echo "$disp_energy - ${seen["$key"]}" | bc)
-    key="$atom_num:$charge"
     echo "$disp_energy - ${seen["$key"]} for $key"
     echo $atom_num $charge $isom_energy >> "relativeisomericenergy.out"
 done < "forrelativeisomericenergy.out"
