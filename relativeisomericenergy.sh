@@ -30,10 +30,6 @@ while read -r line; do
         if (( $(echo "$disp_energy < ${seen["$atom_num"]}" | bc -l) )); then
             seen["$atom_num"]=$min_disp_energy
             isom_energy=$(echo "$disp_energy - $min_disp_energy" | bc -l)
-        elif (( $(echo "$disp_energy > ${seen["$atom_num"]}" | bc -l) )); then
-            continue
-        else
-            echo "There is an error"
         fi
     else
         seen["$atom_num"]=$disp_energy
