@@ -7,4 +7,4 @@ This directory contains scripts that I wrote for various purposes while conducti
 
 [plot_isom_energy.py](https://github.com/carinaluo21/giesekinglab/blob/ba3b91320d2620ddc21d3a915f389ebdbe3b052c/plot_isom_energy.py) is a Python script that plots the relative energy of structural isomers.
 
-[bind_disp.sh]() is a Bash script that calculates binding energy and displacement energy from single-point energies and exports this data to output files upon which further operations can be performed. 
+[bind_disp.sh](https://github.com/carinaluo21/giesekinglab/blob/1601ab7e0fa630696b98e5c4b153d40764394237/bind_disp.sh) is a Bash script that calculates binding energy and displacement energy from single-point energies and exports this data to output files upon which further operations can be performed. 
