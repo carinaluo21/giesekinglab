@@ -15,7 +15,7 @@ while IFS= read -r line; do
     else
         disp_energy=$(echo "$line" | cut -d' ' -f2)
         atom_num=$(echo "$logfile" | cut -c3)
-        echo "$logfile" "$atom_num" "$disp_energy" >> "tmp"
+        echo "$logfile" "$atom_num" "$charge" "$disp_energy" >> "tmp"
     fi
 done < "forrelativeisomericenergy.out"
 
@@ -25,29 +25,31 @@ mv "tmp" "forrelativeisomericenergy.out"
 declare -A seen
 
 while read -r line; do
+    charge=$(echo "$line" | awk '{print $1}' | awk '{print substr($0, 5, 1)}')
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
+    
+    key="$atom_num:$charge"
 
-    if [[ ${seen["$atom_num"]} ]]; then
-        echo "$atom_num has been seen before"
+    if [[ ${seen["$key"]} ]]; then
+        echo "$key has been seen before"
         
         if (( $(awk -v disp_energy="$disp_energy" -v min_disp_energy="${seen["$atom_num"]}" 'BEGIN { print (disp_energy < min_disp_energy) ? 1 : 0 }') )); then
-            seen["$atom_num"]=$disp_energy
+            seen["$key"]=$disp_energy
             echo "the new minimum disp energy for $atom_num is $disp_energy"
         fi
     else
-        seen["$atom_num"]=$disp_energy
-        echo "$atom_num has not been seen before, initial value is $disp_energy"
+        seen["$key"]=$disp_energy
+        echo "$key has not been seen before, initial value is $disp_energy"
     fi
 done < "forrelativeisomericenergy.out"
 
 
 while read -r line; do
-    charge=$(echo "$line" | awk '{print $1}' | awk '{print substr($0, 5, 1)}')
     atom_num=$(echo "$line" | awk '{print $2}')
     disp_energy=$(echo "$line" | awk '{print $3}')
     isom_energy=$(echo "$disp_energy - ${seen["$atom_num"]}" | bc)
-    echo $charge $atom_num $isom_energy >> "relativeisomericenergy.out"
+    echo $atom_num $isom_energy >> "relativeisomericenergy.out"
 done < "forrelativeisomericenergy.out"
 
 #sed -i 's/_eq.log//g' relativeisomericenergy.out
