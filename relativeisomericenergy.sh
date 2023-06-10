@@ -1,12 +1,17 @@
 #!/bin/bash
 
+#Find the equilibrium geometries contained in the "fordisplacementenergy.out" file and print them to the "forrelativeisomericenergy.out" file
 grep "eq.log" "fordisplacementenergy.out" > "forrelativeisomericenergy.out"
+
+#Read the file line by line, and save the name of the log file, the number of atoms in the cluster corresponding to that log file, and print a new line containing the log file name and the number of atoms in the cluster to a temporary file
 while IFS= read -r line; do
         first_field=$(echo "$line" | cut -d' ' -f1)
         third_char=$(echo "$first_field" | cut -c3)
         new_line=$(echo "$line" | sed "s/$first_field/$first_field $third_char/")
         echo "$new_line" >> temp.out
 done < "forrelativeisomericenergy.out"
+
+#Overwrite contents of the temporary file to the "forrelativeisomericenergy.out" file
 mv temp.out forrelativeisomericenergy.out
 
 while read -r line; do
