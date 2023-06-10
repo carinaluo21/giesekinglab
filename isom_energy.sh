@@ -42,6 +42,7 @@ while read -r line; do
     fi
 done < "forrelativeisomericenergy.out"
 
+echo "${seen[@]}"
 
 while read -r line; do
     charge=$(echo "$line" | awk '{print $1}' | awk '{print substr($0, 5, 1)}')
