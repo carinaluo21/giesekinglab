@@ -1,32 +1,23 @@
 #!/bin/bash
 
-input_file="fordisplacementenergy.out"
-output_file="forrelativeisomericenergy.out"
-
 #Find the equilibrium geometries contained in the input file and print them to the output file
-grep "eq.log" "$input_file" > "$output_file"
-
-input_file="forrelativeisomericenergy.out"
-output_file="forrelativeisomericenergy.out"
-
-#Make a temporary file
-tmp_file=$(mktemp)
+grep "eq.log" "fordisplacementenergy.out" > "forrelativeisomericenergy.out"
 
 #Remove any duplicates of each equilibrium geometry and add the number of atoms in each cluster to each unique equilibrium geometry line
 while IFS= read -r line; do
     logfile=$(echo "$line" | cut -d' ' -f1)
     # Check if the line already exists in the temporary file
-    if grep -q "$logfile" "$tmp_file"; then
+    if grep -q "$logfile" "tmp"; then
         continue  # Skip duplicate lines
     else
         disp_energy=$(echo "$line" | cut -d' ' -f2)
         atom_num=$(echo "$logfile" | cut -c3)
-        echo "$logfile" "$atom_num" "$disp_energy" >> "$tmp_file"
+        echo "$logfile" "$atom_num" "$disp_energy" >> "tmp"
     fi
-done < "$input_file"
+done < "forrelativeisomericenergy.out"
 
 # Overwrite the original file with the modified content
-mv "$tmp_file" "$output_file"
+mv "tmp" "forrelativeisomericenergy.out"
 
 while read -r line; do
   field2=$(echo "$line" | awk '{print $2}')
