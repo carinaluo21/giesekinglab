@@ -44,17 +44,17 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	fi
 	
 	#Figure out how many excited states
-	if echo "$file" | grep -q "5"; then
+	if [[ $file == *"5"* ]]; then
 		nstates="5"
-	elif echo "$file" | grep -q "6"; then
+	elif [[ $file == *"6"* ]]; then
 		nstates="6"
-	elif echo "$file" | grep -q "7"; then
+	elif [[ $file == *"7"* ]]; then
 		nstates="7"
-	elif echo "$file" | grep -q "8"; then
+	elif [[ $file == *"8"* ]]; then
 		nstates="8"
-	elif echo "$file" | grep -q "9"; then
+	elif [[ $file == *"9"* ]]; then
 		nstates="9"
-	elif echo "$file" | grep -q "10"; then
+	elif [[ $file == *"10"* ]]; then
 		nstates="10"
 	else
 		echo "Cannot figure out how many states in $file"
