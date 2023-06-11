@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Loop over all files in the current directory
-for file in ./; do
+for file in ./*; do
 	if [[ $file == *.log ]]; then
 		software="Gaussian"
 		
