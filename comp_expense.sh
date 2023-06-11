@@ -27,17 +27,17 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	fi
 	
 	#Figure out what the method is 
-	if echo "$file" | grep -q "^EOM-CCSD_"; then
-    		method="EOM-CCSD"
-	elif echo "$file" | grep -q "^STEOM-CCSD"; then
+	if [[ $file == "^EOM-CCSD"* ]]; then
+		method="EOM-CCSD"
+	elif [[ $file == "^STEOM-CCSD"* ]]; then
     		method="STEOM-CCSD"
-	elif echo "$file" | grep -q "^EOM-DLPNO-CCSD"; then
+	elif [[ $file == "^EOM-DLPNO-CCSD"* ]]; then
 		method="EOM-DLPNO-CCSD"
-	elif echo "$file" | grep -q "^bt-PNO-EOM-CCSD"; then
+	elif [[ $file == "^bt-PNO-EOM-CCSD"* ]]; then
 		method="bt-PNO-EOM-CCSD"
-	elif echo "$file" | grep -q "^bt-PNO-STEOM-CCSD"; then
+	elif [[ $file == "^bt-PNO-STEOM-CCSD"* ]]; then
 		method="bt-PNO-STEOM-CCSD"
-	elif echo "$file" | grep -q "^STEOM-DLPNO-CCSD"; then
+	elif [[ $file == "^STEOM-DLPNO-CCSD"* ]]; then
 		method="STEOM-DLPNO-CCSD"
 	else
 		echo "Cannot figure out the method for $file"
