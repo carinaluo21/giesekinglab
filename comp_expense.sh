@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Loop over all files in the current directory
-for file in ./*; do
+find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r file; do
 	if [[ $file == *.log ]]; then
 		software="Gaussian"
 		
