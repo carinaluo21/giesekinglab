@@ -11,8 +11,6 @@ for file in ./; do
 		minutes=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $6}')
  		seconds=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $8"."$9}')
     		total_minutes=$(echo "$days * 24 * 60 + $hours * 60 + $minutes + $seconds/60" | bc -l)
- 	fi
-
   	elif [[ $file == *.out ]]; then
 		software="ORCA"
 		
