@@ -1,6 +1,7 @@
 #!/bin/bash
 
-find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r file; do
+find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
+	file="${filepath##*/}"
 	echo "The file is $file"
 	if [[ $file == *.log ]]; then
 		software="Gaussian"
