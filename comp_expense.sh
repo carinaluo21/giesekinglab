@@ -2,7 +2,6 @@
 
 find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	file="${filepath##*/}"
-	echo "The file is $file"
 	if [[ $file == *.log ]]; then
 		software="Gaussian"
 		
@@ -61,9 +60,9 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	fi
 	
 	#Figure out the basis set
-	if echo "$file" | grep -q "augccpvdzpp"; then
+	if [[ $file == *"augccpvdzpp"* ]]; then
 		basisset="augccpvdzpp"
-	elif echo "$file" | grep -q "def2SVP"; then
+	elif [[ $file == *"def2SVP"* ]]; then
 		basisset="def2SVP"
 	else 
 		echo "Cannot figure out the basis set for $file"
