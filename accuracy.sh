@@ -15,6 +15,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
         			excitedstate_8=$(grep -m 2 "Excited State   8" "$filepath" | tail -n 1 | awk '{print $5}')
         			excitedstate_9=$(grep -m 2 "Excited State   9" "$filepath" | tail -n 1 | awk '{print $5}')
         			excitedstate_10=$(grep -m 2 "Excited State  10" "$filepath" | tail -n 1 | awk '{print $5}')
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 in $file"
         		else
         			echo "$file does not have 10 excited states"
 			fi
@@ -35,6 +36,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 				excitedstate_8=$(grep -m 5 "IROOT=  8" "$filepath" | tail -n 1 | awk '{print $5}')
 				excitedstate_9=$(grep -m 5 "IROOT=  9" "$filepath" | tail -n 1 | awk '{print $5}')
 				excitedstate_10=$(grep -m 5 "IROOT= 10" "$filepath" | tail -n 1 | awk '{print $5}')
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 in $file"
 			else
 				echo "$file does not have 10 excited states"
 			fi
@@ -44,5 +46,4 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	else
     		echo "$file type is not recognized"
   	fi
-	echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 in $file"
 done
