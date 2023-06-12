@@ -6,11 +6,17 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 		software="Gaussian"
 		
 		elapsed_time=$(grep -m 1 "Elapsed time" "$filepath" | cut -d' ' -f4-)
+		echo "$elapsed_time"
 		days=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $2}')
+		echo "$days"
 		hours=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $4}')
+		echo "$hours"
 		minutes=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $6}')
+		echo "$minutes"
  		seconds=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $8"."$9}')
+		echo "$seconds"
     		total_minutes=$(echo "$days * 24 * 60 + $hours * 60 + $minutes + $seconds/60" | bc -l)
+		echo "$total_minutes"
   	elif [[ $file == *.out ]]; then
 		software="ORCA"
 		
