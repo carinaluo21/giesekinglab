@@ -1,0 +1,106 @@
+#!/bin/bash
+
+find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
+	file="${filepath##*/}"
+	if [[ $file == *.log ]]; then
+	  if [[ $file == "EOM-CCSD"* ]]; then
+      if [[ $file == *"10"* ]]; then
+		    excitedstate_1=$(grep -m 2 "Excited State   1" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_2=$(grep -m 2 "Excited State   2" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_3=$(grep -m 2 "Excited State   3" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_4=$(grep -m 2 "Excited State   4" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_5=$(grep -m 2 "Excited State   5" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_6=$(grep -m 2 "Excited State   6" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_7=$(grep -m 2 "Excited State   7" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_8=$(grep -m 2 "Excited State   8" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_9=$(grep -m 2 "Excited State   9" "$filepath" | tail -n 1 | awk '{print $5}')
+        excitedstate_10=$(grep -m 2 "Excited State  10" "$filepath" | tail -n 1 | awk '{print $5}')
+        echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 in $file"
+      else
+        echo "There are not 10 excited states"
+      fi
+    else 
+      echo "Not an EOM-CCSD file"
+    fi
+  else
+    echo "Not a log file"
+  fi
+done
+  
+  	elif [[ $file == *.out ]]; then
+		software="ORCA"
+		
+    		total_run_time=$(grep -m 1 "TOTAL RUN TIME" "$filepath" | cut -d' ' -f4-)
+    		days=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $1}')
+    		hours=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $3}')
+    		minutes=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $5}')
+    		seconds=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $7}')
+    		msec=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $9}')
+    		total_minutes=$(echo "$days * 24 * 60 + $hours * 60 + $minutes + $seconds/60 + $msec/60000" | bc -l)
+  	else
+		echo "Not sure what software $file is"
+	fi
+	
+	#Figure out what the method is 
+	if [[ $file == "EOM-CCSD"* ]]; then
+		method="EOM-CCSD"
+	elif [[ $file == "STEOM-CCSD"* ]]; then
+    		method="STEOM-CCSD"
+	elif [[ $file == "EOM-DLPNO-CCSD"* ]]; then
+		method="EOM-DLPNO-CCSD"
+	elif [[ $file == "bt-PNO-EOM-CCSD"* ]]; then
+		method="bt-PNO-EOM-CCSD"
+	elif [[ $file == "bt-PNO-STEOM-CCSD"* ]]; then
+		method="bt-PNO-STEOM-CCSD"
+	elif [[ $file == "STEOM-DLPNO-CCSD"* ]]; then
+		method="STEOM-DLPNO-CCSD"
+	else
+		echo "Cannot figure out the method for $file"
+	fi
+	
+	#Figure out how many excited states
+	if [[ $file == *"5"* ]]; then
+		nstates="5"
+	elif [[ $file == *"6"* ]]; then
+		nstates="6"
+	elif [[ $file == *"7"* ]]; then
+		nstates="7"
+	elif [[ $file == *"8"* ]]; then
+		nstates="8"
+	elif [[ $file == *"9"* ]]; then
+		nstates="9"
+	elif [[ $file == *"10"* ]]; then
+		nstates="10"
+	elif [[ $file == *"20"* ]]; then
+		nstates="20"
+	else
+		echo "Cannot figure out how many states in $file"
+	fi
+	
+	#Figure out the basis set
+	if [[ $file == *"augccpvdzpp"* ]]; then
+		basis_set="augccpvdzpp"
+	elif [[ $file == *"def2SVP"* ]]; then
+		basis_set="def2SVP"
+	elif [[ $file == *"def2TZVPD"* ]]; then
+		basis_set="def2TZVPD"
+	elif [[ $file == *"def2TZVPP"* ]]; then
+		basis_set="def2TZVPP"
+	elif [[ $file == *"def2TZVP"* ]]; then
+		basis_set="def2TZVP"
+	elif [[ $file == *"def2SV_P"* ]]; then
+		basis_set="def2SV_P"
+	else 
+		echo "Cannot figure out the basis set for $file"
+	fi
+	
+	#Figure out if the calculation is relativistic
+	if [[ $file == *"rel"* ]]; then
+		rel="yes"
+	else
+		rel="no"
+	fi 
+		
+	echo "For $file the software is $software the method is $method the basis set is $basis_set the states are $nstates the relativistic is $rel and the time is $total_minutes minutes"
+	echo "$software $method $basis_set $nstates $rel $total_minutes" >> comp_expense.out
+done
