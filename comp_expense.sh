@@ -15,12 +15,19 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 		software="ORCA"
 		
     		total_run_time=$(grep -m 1 "TOTAL RUN TIME" "$file" | cut -d' ' -f4-)
+		echo "$total_run_time"
     		days=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $1}')
+		echo "$days"
     		hours=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $3}')
+		echo "$hours"
     		minutes=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $5}')
+		echo "$minutes"
     		seconds=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $7}')
+		echo "$seconds"
     		msec=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $9}')
+		echo "$msec"
     		total_minutes=$(echo "$days * 24 * 60 + $hours * 60 + $minutes + $seconds/60 + $msec/60000" | bc -l)
+		echo "$total_minutes"
   	else
 		echo "Not sure what software $file is"
 	fi
