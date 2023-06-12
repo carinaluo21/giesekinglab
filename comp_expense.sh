@@ -70,6 +70,8 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 		basis_set="def2TZVPD"
 	elif [[ $file == *"def2TZVPP"* ]]; then
 		basis_set="def2TZVPP"
+	elif [[ $file == *"def2TZVP"* ]]; then
+		basis_set="def2TZVP"
 	else 
 		echo "Cannot figure out the basis set for $file"
 	fi
