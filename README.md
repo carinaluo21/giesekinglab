@@ -12,3 +12,5 @@ This directory contains scripts that I wrote for various purposes while conducti
 [comp_expense.sh](https://github.com/carinaluo21/giesekinglab/blob/445bcdadf7ca8fa090cd654b0266c24837c4ef01/comp_expense.sh) is a Bash script that extracts the computational expense from EOM-CCSD-based excited state calculations and exports this data to output files upon which further operations can be performed. 
 
 [plot_comp_expense.py](https://github.com/carinaluo21/giesekinglab/blob/ee5faa960f701f765072e8327f3e2e2a11be851b/plot_comp_expense.py) is a Python script that takes the output of [comp_expense.sh](https://github.com/carinaluo21/giesekinglab/blob/445bcdadf7ca8fa090cd654b0266c24837c4ef01/comp_expense.sh) and creates a bar chart.
+
+[deg_orb.py](https://github.com/carinaluo21/giesekinglab/blob/be448454c02f997333b3cb047951854a985065ad/deg_orb.py) is a Python script that combines user-specified cube files into one cube file. This script was used to analyze degenerate orbitals as a set in my basis set comparison project.
