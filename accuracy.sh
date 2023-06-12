@@ -22,7 +22,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
       			echo "$file method is not recognized"
     		fi
   	elif [[ $file == *.out ]]; then
-		if [[ $file == "STEOM-CCSD"* || $file == "STEOM-DLPNO-CCSD"* || $file == "EOM-DLPNO-CCSD"* ]]; then
+		if [[ $file == "STEOM-CCSD"* || $file == "STEOM-DLPNO-CCSD"* || $file == "EOM-DLPNO-CCSD"* || $file == "bt-PNO-EOM-CCSD"* ]]; then
 			if [[ $file == *"10"* ]]; then
 				excitedstate_1=$(grep -m 5 "IROOT=  1" "$filepath" | tail -n 1 | awk '{print $5}')
 				excitedstate_2=$(grep -m 5 "IROOT=  2" "$filepath" | tail -n 1 | awk '{print $5}')
