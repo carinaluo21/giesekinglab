@@ -19,7 +19,8 @@ y_values = [item[1] for item in sorted_data]
 plt.bar(x_values, y_values)
 
 plt.ylabel('Minutes', fontsize=18)
-plt.xticks(rotation=30, fontsize=14)
+plt.xticks(rotation=20, fontsize=14)
+plt.yticks(fontsize=14)
 output_file=input("What would you like the plot to be called?")
 plt.savefig(output_file)
 plt.show()
