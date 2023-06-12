@@ -10,6 +10,9 @@ with open(input_file, 'r') as file:
         if fields[4] == "no" and fields[3] == "10" and fields[2] == "augccpvdzpp":
             data.append([fields[1], float(fields[5])])
 print(data)
+sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
+print(sorted_data)
+
 
 #dy_values_sorted = sorted(dy_values, reverse=True)
 
