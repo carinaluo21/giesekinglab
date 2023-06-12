@@ -77,6 +77,6 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 		rel="no"
 	fi 
 		
-	echo "For $file the software is $software the method is $method the basis set is $basis_set the states are $nstates and the time is $total_minutes minutes"
+	echo "For $file the software is $software the method is $method the basis set is $basis_set the states are $nstates the relativistic is $rel and the time is $total_minutes minutes"
 	#echo "$software $method $basis_set $nstates $rel $total_minutes" >> computationalexpense
 done
