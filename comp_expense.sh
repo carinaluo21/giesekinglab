@@ -14,7 +14,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
   	elif [[ $file == *.out ]]; then
 		software="ORCA"
 		
-    		total_run_time=$(grep -m 1 "TOTAL RUN TIME" "$file" | cut -d' ' -f4-)
+    		total_run_time=$(grep -m 1 "TOTAL RUN TIME" "$filepath" | cut -d' ' -f4-)
 		echo "$total_run_time"
     		days=$(echo "$total_run_time" | awk -F'[ .:]+' '{print $1}')
 		echo "$days"
