@@ -65,7 +65,9 @@ if deg_orb >= 3:
 
 wavefunction_values_combined = [wavefunction_values_1[i] + wavefunction_values_2[i] + wavefunction_values_3[i] for i in range(len(wavefunction_values_1))]
 
-with open("tAg10+2_spe_949392.cub", 'a') as file:
+output_file=input("What do you want the combined cube file to be called?")
+
+with open(output_file, 'a') as file:
     line_count = 0
     for i, number in enumerate(wavefunction_values_combined, 1):
         file.write(str(number))
