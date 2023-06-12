@@ -5,7 +5,7 @@ dy_values = []
 
 input_file=input("What is your input file called?")
 
-with open('computationalexpense', 'r') as file:
+with open(input_file, 'r') as file:
     for line in file:
         fields = line.split()
         if fields[3] == "10" and fields[2] == "def2SVP":
