@@ -8,7 +8,7 @@ with open(input_file, 'r') as file:
     for line in file:
         fields = line.split()
         if fields[4] == "no" and fields[3] == "10" and fields[2] == "augccpvdzpp":
-            data.append(fields[1], float(fields[5]))
+            data.append([fields[1], float(fields[5])])
 print(data)
 
 #dy_values_sorted = sorted(dy_values, reverse=True)
