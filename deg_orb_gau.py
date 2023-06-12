@@ -63,7 +63,12 @@ if deg_orb >= 3:
                                 wavefunction_value = [abs(float(value)) for value in values]
                                 wavefunction_values_3.extend(wavefunction_value)
 
-wavefunction_values_combined = [wavefunction_values_1[i] + wavefunction_values_2[i] + wavefunction_values_3[i] for i in range(len(wavefunction_values_1))]
+if deg_orb = 3:
+	wavefunction_values_combined = [wavefunction_values_1[i] + wavefunction_values_2[i] + wavefunction_values_3[i] for i in range(len(wavefunction_values_1))]
+elif deg_orb = 2:
+	wavefunction_values_combined = [wavefunction_values_1[i] + wavefunction_values_2[i] for i in range(len(wavefunction_values_1))]
+else:
+	print("Something is wrong")
 
 output_file=input("What do you want the combined cube file to be called?")
 
