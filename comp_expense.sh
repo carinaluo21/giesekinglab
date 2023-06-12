@@ -71,7 +71,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	fi
 	
 	#Figure out if the calculation is relativistic
-	if echo "$file" | grep -q "rel"; then
+	if [[ $file == *"rel"* ]]; then
 		rel="yes"
 	else
 		rel="no"
