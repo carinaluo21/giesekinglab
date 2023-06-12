@@ -9,10 +9,21 @@ with open(input_file, 'r') as file:
         fields = line.split()
         if fields[4] == "no" and fields[3] == "10" and fields[2] == "augccpvdzpp":
             data.append([fields[1], float(fields[5])])
-print(data)
-sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
-print(sorted_data)
 
+sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
+
+x_values = [item[0] for item in sorted_data]
+y_values = [item[1] for item in sorted_data]
+
+# Create the bar chart
+plt.bar(x_values, y_values)
+
+# Add labels and title
+plt.xlabel('Method', fontsize=18)
+plt.ylabel('Minutes', fontsize=18)
+
+# Display the chart
+plt.show()
 
 #dy_values_sorted = sorted(dy_values, reverse=True)
 
