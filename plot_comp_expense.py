@@ -18,11 +18,8 @@ y_values = [item[1] for item in sorted_data]
 # Create the bar chart
 plt.bar(x_values, y_values)
 
-# Add labels and title
-plt.xlabel('Method', fontsize=18)
 plt.ylabel('Minutes', fontsize=18)
-
-# Display the chart
+plt.xticks(rotation=45)
 plt.show()
 
 #dy_values_sorted = sorted(dy_values, reverse=True)
