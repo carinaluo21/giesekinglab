@@ -2,6 +2,8 @@
 
 find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	file="${filepath##*/}"
+	echo "$file"
+	echo "$filepath"
 	if [[ $file == *.log ]]; then
 		software="Gaussian"
 		
