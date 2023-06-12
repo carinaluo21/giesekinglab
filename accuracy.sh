@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "What would you like the output file to be called?"
+read output_file
+
 find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	file="${filepath##*/}"
 	if [[ $file == *.log ]]; then
@@ -15,7 +18,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
         			excitedstate_8=$(grep -m 2 "Excited State   8" "$filepath" | tail -n 1 | awk '{print $5}')
         			excitedstate_9=$(grep -m 2 "Excited State   9" "$filepath" | tail -n 1 | awk '{print $5}')
         			excitedstate_10=$(grep -m 2 "Excited State  10" "$filepath" | tail -n 1 | awk '{print $5}')
-				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 in $file"
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 $file" >> $output_file
 			fi
 		
 		else 
@@ -34,7 +37,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 				excitedstate_8=$(grep -m 5 "IROOT=  8" "$filepath" | tail -n 1 | awk '{print $5}')
 				excitedstate_9=$(grep -m 5 "IROOT=  9" "$filepath" | tail -n 1 | awk '{print $5}')
 				excitedstate_10=$(grep -m 4 "IROOT= 10" "$filepath" | tail -n 1 | awk '{print $5}')
-				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 in $file"
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 $file" >> $output_file
 			fi
 		else
 			echo "$file method is not recognized"
