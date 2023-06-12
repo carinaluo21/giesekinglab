@@ -61,14 +61,12 @@ if deg_orb >= 3:
 				wavefunction_value = [math.sqrt(abs(float(value))) for value in values]
 				wavefunction_values_3.extend(wavefunction_value)
 
-print(wavefunction_values_1[0])
-print(wavefunction_values_1[-1])
-print(wavefunction_values_2[0])
-print(wavefunction_values_2[-1])
-print(wavefunction_values_3[0])
-print(wavefunction_values_3[-1])
-
-wavefunction_values_combined = [(wavefunction_values_1[i] + wavefunction_values_2[i] + wavefunction_values_3[i])**2 for i in range(len(wavefunction_values_1))]
+if deg_orb == 3:
+	wavefunction_values_combined = [(wavefunction_values_1[i] + wavefunction_values_2[i] + wavefunction_values_3[i])**2 for i in range(len(wavefunction_values_1))]
+elif deg_orb == 2:
+	wavefunction_values_combined = [(wavefunction_values_1[i] + wavefunction_values_2[i])**2 for i in range(len(wavefunction_values_1))]
+else:
+	print("There is an error.")
 
 result_file=str(input("What file do you want to write the combined wavefunction values to?"))
 
