@@ -5,7 +5,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	if [[ $file == *.log ]]; then
 		software="Gaussian"
 		
-		elapsed_time=$(grep -m 1 "Elapsed time" "$file" | cut -d' ' -f4-)
+		elapsed_time=$(grep -m 1 "Elapsed time" "$filepath" | cut -d' ' -f4-)
 		days=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $2}')
 		hours=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $4}')
 		minutes=$(echo "$elapsed_time" | awk -F'[ .:]+' '{print $6}')
