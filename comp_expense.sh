@@ -55,6 +55,8 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 		nstates="9"
 	elif [[ $file == *"10"* ]]; then
 		nstates="10"
+	elif [[ $file == *"20"* ]]; then
+		nstates="20"
 	else
 		echo "Cannot figure out how many states in $file"
 	fi
