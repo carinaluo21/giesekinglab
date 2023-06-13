@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 
 # Read data from file
 data = []
@@ -22,8 +21,9 @@ label_dict = {label: i + 1 for i, label in enumerate(labels)}
 fig, ax = plt.subplots()
 for number, label in data:
     x_value = label_dict[label]
-    rect = Rectangle((x_value - 0.3 / 2, number - 0.6 / 2), 0.3, 0.6, edgecolor='black')
-    ax.add_patch(rect)
+    plt.scatter(x_value, number, marker="hline")
+
+
 
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
 
