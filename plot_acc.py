@@ -17,12 +17,14 @@ labels = set(label for _, label in data)
 # Assign numeric values to labels
 label_dict = {label: i + 1 for i, label in enumerate(labels)}
 
-# Generate categorical scatter plot
+
+fig, ax = plt.subplots()
 for number, label in data:
     x_value = label_dict[label]
     plt.scatter(x_value, number, marker="hline")
 
-# Set x-axis tick labels
+
+
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
 
 plt.xlabel('Label')
