@@ -22,7 +22,7 @@ h_val=3
 verts = list(zip([-h_val,h_val,h_val,-h_val],[-v_val,-v_val,v_val,v_val]))
 for number, label in data:
     x_value = label_dict[label]
-    plt.scatter(x_value, number, marker=verts, s=30)
+    plt.scatter(x_value, number, marker=verts, s=300)
 
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
 
