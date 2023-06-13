@@ -12,16 +12,20 @@ with open(input_file, 'r') as file:
         for number in numbers:
             data.append((number, label))
 
-x = list(range(len(data)))
-y = [d[0] for d in data]
-labels = [d[1] for d in data]
+labels = set(label for _, label in data)
 
-plt.scatter(x, y)
+# Assign numeric values to labels
+label_dict = {label: i + 1 for i, label in enumerate(labels)}
 
-plt.xticks(x, labels, rotation='vertical')
+# Generate categorical scatter plot
+for number, label in data:
+    x_value = label_dict[label]
+    plt.scatter(x_value, number)
 
-plt.ylabel('Energy (eV)')
+# Set x-axis tick labels
+plt.xticks(list(label_dict.values()), list(label_dict.keys()))
 
-output_file=input("What do you want the plot to be called?")
-plt.savefig(output_file)
+plt.xlabel('Label')
+plt.ylabel('Value')
+plt.show()
 
