@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 
 # Read data from file
 data = []
@@ -21,7 +20,7 @@ label_dict = {label: i + 1 for i, label in enumerate(labels)}
 # Generate categorical scatter plot
 for number, label in data:
     x_value = label_dict[label]
-    plt.scatter(x_value, number, marker="s", s=(30, 300))
+    plt.scatter(x_value, number, marker="hline")
 
 # Set x-axis tick labels
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
