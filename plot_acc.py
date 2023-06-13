@@ -27,5 +27,7 @@ plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
 
 plt.xlabel('Label')
 plt.ylabel('Value')
-plt.savefig("result.png")
+
+output_file=input("What would you like the plot to be called?")
+plt.savefig(output_file)
 
