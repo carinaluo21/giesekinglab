@@ -17,7 +17,7 @@ labels = set(label for _, label in data)
 label_dict = {label: i + 1 for i, label in enumerate(labels)}
 
 ax = plt.subplot(1,1,1)
-v_val=1.0
+v_val=30
 h_val=300
 verts = list(zip([-h_val,h_val,h_val,-h_val],[-v_val,-v_val,v_val,v_val]))
 for number, label in data:
