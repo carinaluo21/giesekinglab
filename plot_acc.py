@@ -18,12 +18,13 @@ labels = set(label for _, label in data)
 # Assign numeric values to labels
 label_dict = {label: i + 1 for i, label in enumerate(labels)}
 
-# Generate categorical scatter plot
+
+fig, ax = plt.subplots()
 for number, label in data:
     x_value = label_dict[label]
-    plt.scatter(x_value, number, marker="s", s=(30, 300))
+    rect = Rectangle((x_value - 0.3 / 2, number - 0.6 / 2), 0.3, 0.6, edgecolor='black')
+    ax.add_patch(rect)
 
-# Set x-axis tick labels
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
 
 plt.xlabel('Label')
