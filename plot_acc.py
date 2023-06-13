@@ -21,7 +21,7 @@ label_dict = {label: i + 1 for i, label in enumerate(labels)}
 fig, ax = plt.subplots()
 for number, label in data:
     x_value = label_dict[label]
-    plt.scatter(x_value, number, marker="_")
+    plt.scatter(x_value, number, marker="_", markersize=30)
 
 
 
