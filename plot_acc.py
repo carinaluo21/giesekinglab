@@ -30,4 +30,5 @@ plt.ylabel('Value')
 
 output_file=input("What would you like the plot to be called?")
 plt.savefig(output_file)
+plt.show()
 
