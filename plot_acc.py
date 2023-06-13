@@ -20,7 +20,7 @@ label_dict = {label: i + 1 for i, label in enumerate(labels)}
 # Generate categorical scatter plot
 for number, label in data:
     x_value = label_dict[label]
-    plt.scatter(x_value, number)
+    plt.scatter(x_value, number, marker="s")
 
 # Set x-axis tick labels
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
