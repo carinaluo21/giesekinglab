@@ -1,16 +1,20 @@
 #!/usr/bin/python
 
+#Import the needed modules
 import time
-import math
+#Start keeping track of the computation time
 start_time = time.time()
+import math
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import numpy as np
 
-#Python script for reading the data contained in cube files. 
+#Get the molecule name from the name of the cube file
 cubefilename = input("What is your Gaussian cube file name?")
 wheretostop = cubefilename.index("_")
 moleculename = cubefilename[:wheretostop]
+
+#Start reading the cube file line by line
 line = open(cubefilename).readlines()
 
 #Ignore the first two lines, which are headers.
