@@ -15,7 +15,7 @@ line = open(cubefilename).readlines()
 
 #Ignore the first two lines, which are headers.
 #Read in the data from the third line, which contains the number of atoms included in the file followed by the position of the origin of the volumetric data.
-numberofatoms = line[2].split()[0] 
+numberofatoms = abs(line[2].split()[0])
 originx = float(line[2].split()[1])
 originy = float(line[2].split()[2])
 originz = float(line[2].split()[3])
