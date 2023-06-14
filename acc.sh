@@ -96,7 +96,7 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
      					echo "Can't figure out basis set for $file"
 	  			fi
       
-				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 ${method}/${basis_set} $software" >> $output_file
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 ${method}/${basis_set} $software $file" >> $output_file
 			fi
 		else
 			echo "$file method is not recognized"
