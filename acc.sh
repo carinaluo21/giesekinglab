@@ -6,6 +6,7 @@ read output_file
 find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 	file="${filepath##*/}"
 	if [[ $file == *.log ]]; then
+ 		software="Gaussian"
 		if [[ $file == "EOM-CCSD"* ]]; then
 	  		if [[ $file == *"10"* ]]; then
 				excitedstate_1=$(grep -m 2 "Excited State   1" "$filepath" | tail -n 1 | awk '{print $5}')
@@ -39,13 +40,14 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
      					echo "Can't figure out basis set for $file"
 	  			fi
       
-				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 EOM-CCSD/${basis_set}" >> $output_file
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 EOM-CCSD/${basis_set} $software" >> $output_file
 			fi
 		
 		else 
       			echo "$file method is not recognized"
     		fi
   	elif [[ $file == *.out ]]; then
+   		software="ORCA"
 		if [[ $file == "STEOM-CCSD"* || $file == "STEOM-DLPNO-CCSD"* || $file == "EOM-DLPNO-CCSD"* || $file == "bt-PNO-EOM-CCSD"* || $file == "bt-PNO-STEOM-CCSD"* || $file == "EOM-CCSD"* ]]; then
 			if [[ $file == *"10"* ]]; then
 				excitedstate_1=$(grep -m 5 "IROOT=  1" "$filepath" | tail -n 1 | awk '{print $5}')
@@ -94,12 +96,14 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
      					echo "Can't figure out basis set for $file"
 	  			fi
       
-				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 ${method}/${basis_set}" >> $output_file
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 ${method}/${basis_set} $software" >> $output_file
 			fi
 		else
 			echo "$file method is not recognized"
 		fi
 	else
     		echo "$file type is not recognized"
-  	fi
+      else 
+      	echo "Software not recognized"
+      fi
 done
