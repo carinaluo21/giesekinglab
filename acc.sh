@@ -18,7 +18,28 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
         			excitedstate_8=$(grep -m 2 "Excited State   8" "$filepath" | tail -n 1 | awk '{print $5}')
         			excitedstate_9=$(grep -m 2 "Excited State   9" "$filepath" | tail -n 1 | awk '{print $5}')
         			excitedstate_10=$(grep -m 2 "Excited State  10" "$filepath" | tail -n 1 | awk '{print $5}')
-				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 $file" >> $output_file
+
+       				if [[ $file == *"def2TZVPPD"* ]]; then
+    					basis_set="def2TZVPPD"
+	 			elif [[ $file == *"augccpvdzpp"* ]]; then
+    					basis_set="augccpvdzpp"
+	 			elif [[ $file == *"def2SV_P"* ]]; then
+    					basis_set="def2SV_P"
+	 			elif [[ $file == *"def2SVP_"* ]]; then
+    					basis_set="def2SVP"
+	 			elif [[ $file == *"def2SVPD"* ]]; then
+    					basis_set="def2SVPD"
+	 			elif [[ $file == *"def2TZVP_"* ]]; then
+    					basis_set="def2TZVP"
+	 			elif [[ $file == *"def2TZVPD"* ]]; then
+    					basis_set="def2TZVPD"
+	 			elif [[ $file == *"def2TZVPP"* ]]; then
+    					basis_set="def2TZVPP"
+	 			else 
+     					echo "Can't figure out basis set for $file"
+	  			fi
+      
+				echo "$excitedstate_1 $excitedstate_2 $excitedstate_3 $excitedstate_4 $excitedstate_5 $excitedstate_6 $excitedstate_7 $excitedstate_8 $excitedstate_9 $excitedstate_10 EOM-CCSD/${basis_set}" >> $output_file
 			fi
 		
 		else 
