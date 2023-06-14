@@ -102,8 +102,6 @@ find . -type f \( -name "*.log" -o -name "*.out" \) | while read -r filepath; do
 			echo "$file method is not recognized"
 		fi
 	else
-    		echo "$file type is not recognized"
-      else 
-      	echo "Software not recognized"
-      fi
+    		echo "$file software is not recognized"
+	fi
 done
