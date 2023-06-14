@@ -9,7 +9,7 @@ with open(input_file, 'r') as file:
     for line in file:
         fields = line.split()
         if fields[4] == "no" and fields[3] == "10" and fields[1] == method:
-            data.append([fields[1], float(fields[5])])
+            data.append([fields[2], float(fields[5])])
 
 sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
 
