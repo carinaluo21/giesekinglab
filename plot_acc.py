@@ -16,6 +16,8 @@ labels = set(label for _, label in data)
 # Assign numeric values to labels
 label_dict = {label: i + 1 for i, label in enumerate(labels)}
 
+plt.figure(figsize=(15, 10))
+
 ax = plt.subplot(1,1,1)
 v_val=1
 h_val=10
