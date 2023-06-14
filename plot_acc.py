@@ -28,8 +28,7 @@ for number, label in data:
 
 plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=45)
 
-plt.xlabel('Label')
-plt.ylabel('Value')
+plt.ylabel('Energy (eV)', fontsize=18)
 
 output_file=input("What would you like the plot to be called?")
 plt.savefig(output_file)
