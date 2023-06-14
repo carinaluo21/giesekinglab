@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 data = []
 
 input_file=input("What is your input file called?")
-basis_set=input("What basis set would you like to use?")
+#basis_set=input("What basis set would you like to use?")
+method=input("What method would you like to use?")
 with open(input_file, 'r') as file:
     for line in file:
         fields = line.split()
-        if fields[4] == "no" and fields[3] == "10" and fields[2] == basis_set:
+        if fields[4] == "no" and fields[3] == "10" and fields[1] == method:
             data.append([fields[1], float(fields[5])])
 
 sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
