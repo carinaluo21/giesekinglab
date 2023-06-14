@@ -16,7 +16,7 @@ labels = set(label for _, label in data)
 # Assign numeric values to labels
 label_dict = {label: i + 1 for i, label in enumerate(labels)}
 
-plt.figure(figsize=(15, 10))
+plt.figure(figsize=(15, 15))
 
 ax = plt.subplot(1,1,1)
 v_val=1
@@ -26,7 +26,7 @@ for number, label in data:
     x_value = label_dict[label]
     plt.scatter(x_value, number, marker=verts, s=1500, color="blue")
 
-plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=45)
+plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=30)
 
 plt.ylabel('Energy (eV)', fontsize=18)
 
