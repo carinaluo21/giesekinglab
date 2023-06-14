@@ -24,9 +24,9 @@ h_val=10
 verts = list(zip([-h_val,h_val,h_val,-h_val],[-v_val,-v_val,v_val,v_val]))
 for number, label in data:
     x_value = label_dict[label]
-    plt.scatter(x_value, number, marker=verts, s=1500)
+    plt.scatter(x_value, number, marker=verts, s=1500, color="blue")
 
-plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=90)
+plt.xticks(list(label_dict.values()), list(label_dict.keys()), rotation=45)
 
 plt.xlabel('Label')
 plt.ylabel('Value')
