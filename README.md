@@ -1,7 +1,9 @@
 # giesekinglab
 This directory contains scripts that I wrote for research purposes while working in the Gieseking group at Brandeis University. 
 
-The scripts are organized into folders according to what project they were used for. The [basis_set folder](https://github.com/carinaluo21/giesekinglab/tree/ce17ea6676aa84d2f841baeecac07a5083d17b31/basis_set) contains scripts used in a project to compare 
+The scripts are organized into folders according to what project they were used for. 
+*The [basis_set folder](https://github.com/carinaluo21/giesekinglab/tree/ce17ea6676aa84d2f841baeecac07a5083d17b31/basis_set) contains scripts used to compare the structure of orbitals computed with either the aug-cc-pVDZ-PP basis set or a plane wave basis set.
+
 
 [analyze_cube_file.py](https://github.com/carinaluo21/giesekinglab/blob/f7f4662c1dfc198b9056bc1296c02b19cceea7d0/analyze_cube_file.py) is a Python script for comparing .cub files of molecular orbitals in terms of the value of the wavefunction along the x, y, and z axes. This script was used in a project for comparing orbitals generated using a plane wave basis set to orbitals generated using a Dunning basis set. 
 
