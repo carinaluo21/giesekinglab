@@ -15,7 +15,7 @@ sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
 x_values = [item[0] for item in sorted_data]
 y_values = [item[1] for item in sorted_data]
 
-plt.figure(figsize=(15, 6))
+plt.figure(figsize=(15, 10))
 plt.bar(x_values, y_values)
 
 plt.ylabel('Minutes', fontsize=18)
