@@ -23,24 +23,24 @@ do
 			neutralatoms=$(echo $subtractneutralatoms*$Au1neutral | bc)
 			positiveatoms=0
 			negativeatoms=0
-		fi
 	
 		#If the charge is negative, then subtract the appropriate number of neutral atoms and subtract one negative atom
-		if [ "$charge" = "-" ]; then
+		elif [ "$charge" = "-" ]; then
 			subtractneutralatoms=$(echo $n - 1 | bc)
 			neutralatoms=$(echo $subtractneutralatoms*$Au1neutral | bc)
 			positiveatoms=0
 			subtractnegativeatoms=1
 			negativeatoms=$(echo $subtractnegativeatoms*$Au1negative1| bc)
-		fi
 	
 		#If the charge is positive, then subtract the appropriate number of neutral atoms and one positive atom 
-		if [ "$charge" = "1" ]; then
+		elif [ "$charge" = "1" ]; then
 			subtractneutralatoms=$(echo $n - 1 | bc)
 			neutralatoms=$(echo $subtractneutralatoms*$Au1neutral | bc)
 			positiveatoms=$(echo 1*$Au1positive1 | bc)
 			negativeatoms=0
-		fi
+		else
+  			echo "Charge is weird for $logfile"
+  		fi
 	
 		#Calculate the binding energy
 		bindingenergy=$(echo $energyvalue - $neutralatoms - $positiveatoms - $negativeatoms | bc)
@@ -54,18 +54,18 @@ do
 
 		#For neutral clusters, output all the binding energies per atom to a file
 		if [ "$charge" = "0" ]; then
-        		echo $n $bindingenergyperatomineV >> bindingenergy_neutralclusters.out
-		fi
+        		echo $n $bindingenergyperatomineV >> bindingenergy_neutralclusters.ou
 
 		#For anionic clusters, output all the binding energies per atom to a file
-		if [ "$charge" = "-" ]; then
+		elif [ "$charge" = "-" ]; then
                 	echo $n $bindingenergyperatomineV >> bindingenergy_negativeclusters.out
-        	fi
 	
 		#For cationic clusters, output all the binding energies per atom to a file
-		if [ "$charge" = "1" ]; then
+		elif [ "$charge" = "1" ]; then
                 	echo $n $bindingenergyperatomineV >> bindingenergy_positiveclusters.out
-        	fi
+        	else
+	 		echo "Charge is weird for $logfile"
+	 	fi
 
 	fi	
 done
