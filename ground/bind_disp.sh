@@ -16,7 +16,7 @@ do
 
 		#Extract the energy value from the log file
 		energyvalue=$( bc <<< "$(grep -m 1 "CCSD(T)=" $logfilepath | cut -b 11-24)*1000" | cut -b 1-13 )
-		echo "$energyvalue for $logfile"
+
 		#If the charge is neutral, then subtract the appropriate number of neutral atoms
 		if [ "$charge" = "0" ]; then
 			subtractneutralatoms=$(echo $n - 0 | bc)
