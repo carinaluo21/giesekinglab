@@ -52,4 +52,4 @@ ax1.set_title("Anionic")
 ax1.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 #Save the figure
-plt.savefig("bindingenergy.png")
+plt.savefig("bindingenergy.png", dpi=300)
