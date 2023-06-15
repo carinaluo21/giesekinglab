@@ -59,5 +59,5 @@ ax1.set_yticklabels(ax1.get_yticks(), fontsize=18)
 ax2.set_yticklabels(ax2.get_yticks(), fontsize=18)
 ax3.set_yticklabels(ax3.get_yticks(), fontsize=18)
 
-#Save the figure
+plt.subplots_adjust(left=0.05, right=0.95, bottom=0.1, top=0.9)
 plt.savefig("bindingenergy.png", dpi=500)
