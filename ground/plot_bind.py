@@ -34,7 +34,7 @@ with open("bindingenergy_negativeclusters.out", "r") as file:
 			binding_energy_negative.append(float(fields[1]))
 
 #Create a figure with subplots
-fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15,15))
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15,20))
 
 #Create scatter plots on each subplot
 ax3.scatter(number_of_atoms_positive, binding_energy_positive)
