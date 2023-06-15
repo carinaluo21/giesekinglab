@@ -39,7 +39,7 @@ do
 			positiveatoms=$(echo 1*$Au1positive1 | bc)
 			negativeatoms=0
 		else
-  			echo "Charge is weird for $logfile"
+  			echo "Charge is not recognized for $logfile"
   		fi
 	
 		#Calculate the binding energy
@@ -64,7 +64,7 @@ do
 		elif [ "$charge" = "1" ]; then
                 	echo $n $bindingenergyperatomineV >> bindingenergy_positiveclusters.out
         	else
-	 		echo "Charge is weird for $logfile"
+	 		echo "Cannot write to binding energy output file for $logfile"
 	 	fi
 
 	fi	
@@ -73,6 +73,7 @@ done
 while IFS= read -r line; do
         logfile=$(echo "$line" | awk '{print $1}')
         energy=$(echo "$line" | awk '{print $2}')
+	echo "$logfile has energy $energy"
 
         geo="${logfile:0:8}"
 	logfilepath=$(find -name $logfile -print -quit)
