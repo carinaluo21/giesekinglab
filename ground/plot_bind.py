@@ -32,15 +32,6 @@ with open("bindingenergy_negativeclusters.out", "r") as file:
 		if len(fields) >= 2:
 			number_of_atoms_negative.append(int(fields[0]))
 			binding_energy_negative.append(float(fields[1]))
-#Sort the data
-#sorted_data_neutral = sorted(zip(number_of_atoms_neutral, binding_energy_neutral))
-#sorted_data_positive = sorted(zip(number_of_atoms_positive, binding_energy_positive))
-#sorted_data_negative = sorted(zip(number_of_atoms_negative, binding_energy_negative))
-
-#Extract the sorted x and y values
-#x_neutral, y_neutral = zip(*sorted_data_neutral)
-#x_positive, y_positive = zip(*sorted_data_positive)
-#x_negative, y_negative = zip(*sorted_data_negative)
 
 #Create a figure with subplots
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
