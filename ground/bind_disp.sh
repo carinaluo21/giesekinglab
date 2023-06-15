@@ -6,7 +6,7 @@ Au1positive1=-134.90644798
 
 for logfilepath in $(find -name '*.log')
 do
-	if [[ "$logfilepath" != *"Eq_geo"* ]]; then
+	if [[ "$logfilepath" != *"eq"* ]]; then
 		#Extract the name of the log file from the path
 		logfile=$(echo "$logfilepath" | awk -F "/" '{print $NF}')
 		#Extract the number of atoms from the log file name
