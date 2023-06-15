@@ -46,19 +46,19 @@ with open("bindingenergy_negativeclusters.out", "r") as file:
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
 
 #Create scatter plots on each subplot
-ax1.scatter(number_of_atoms_positive, binding_energy_positive)
-ax1.set_ylabel("Binding Energy (eV)")
-ax1.set_title("Cationic Clusters")
-ax1.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
+ax3.scatter(number_of_atoms_positive, binding_energy_positive)
+ax3.set_ylabel("Binding Energy (eV)")
+ax3.set_title("Cationic Clusters")
+ax3.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 ax2.scatter(number_of_atoms_neutral, binding_energy_neutral)
 ax2.set_xlabel("Number of Atoms")
 ax2.set_title("Neutral Clusters")
 ax2.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
-ax3.scatter(number_of_atoms_negative, binding_energy_negative)
-ax3.set_title("Anionic Clusters")
-ax3.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
+ax1.scatter(number_of_atoms_negative, binding_energy_negative)
+ax1.set_title("Anionic Clusters")
+ax1.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 #Save the figure
 plt.savefig("bindingenergy.png")
