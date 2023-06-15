@@ -38,17 +38,17 @@ fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(25,15))
 
 #Create scatter plots on each subplot
 ax3.scatter(number_of_atoms_positive, binding_energy_positive)
-ax3.set_title("Cationic")
+ax3.set_title("Cationic", fontsize=30)
 ax3.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 ax2.scatter(number_of_atoms_neutral, binding_energy_neutral)
-ax2.set_xlabel("Number of Atoms", fontsize=18)
-ax2.set_title("Neutral")
+ax2.set_xlabel("Number of Atoms", fontsize=30)
+ax2.set_title("Neutral", fontsize=30)
 ax2.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 ax1.scatter(number_of_atoms_negative, binding_energy_negative)
-ax1.set_ylabel("Binding Energy (eV)", fontsize=18)
-ax1.set_title("Anionic")
+ax1.set_ylabel("Binding Energy (eV)", fontsize=30)
+ax1.set_title("Anionic", fontsize=30)
 ax1.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 #Save the figure
