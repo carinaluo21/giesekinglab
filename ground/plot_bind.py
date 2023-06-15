@@ -47,9 +47,9 @@ ax2.set_title("Neutral")
 ax2.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 ax1.scatter(number_of_atoms_negative, binding_energy_negative)
-ax1.set_ylabel("Binding Energy (eV)")
+ax1.set_ylabel("Binding Energy (eV)", fontsize=18)
 ax1.set_title("Anionic")
 ax1.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 #Save the figure
-plt.savefig("bindingenergy.png", dpi=300)
+plt.savefig("bindingenergy.png", dpi=500)
