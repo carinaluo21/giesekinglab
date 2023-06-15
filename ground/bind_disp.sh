@@ -16,7 +16,7 @@ do
 
 		#Extract the energy value from the log file
 		energyvalue=$( bc <<< "$(grep -m 1 "CCSD(T)=" $logfilepath | cut -b 11-24)*1000" | cut -b 1-13 )
-
+		echo "Got the energy value"
 		#If the charge is neutral, then subtract the appropriate number of neutral atoms
 		if [ "$charge" = "0" ]; then
 			subtractneutralatoms=$(echo $n - 0 | bc)
@@ -41,8 +41,6 @@ do
 		else
   			echo "Charge is not recognized for $logfile"
   		fi
-
-    		echo "Finished extracting the charges"
 	
 		#Calculate the binding energy
 		bindingenergy=$(echo $energyvalue - $neutralatoms - $positiveatoms - $negativeatoms | bc)
