@@ -41,6 +41,8 @@ do
 		else
   			echo "Charge is not recognized for $logfile"
   		fi
+
+    		echo "Finished extracting the charges"
 	
 		#Calculate the binding energy
 		bindingenergy=$(echo $energyvalue - $neutralatoms - $positiveatoms - $negativeatoms | bc)
@@ -73,7 +75,6 @@ done
 while IFS= read -r line; do
         logfile=$(echo "$line" | awk '{print $1}')
         energy=$(echo "$line" | awk '{print $2}')
-	echo "$logfile has energy $energy"
 
         geo="${logfile:0:8}"
 	logfilepath=$(find -name $logfile -print -quit)
