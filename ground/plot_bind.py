@@ -51,5 +51,9 @@ ax1.set_ylabel("Binding Energy (eV)", fontsize=30)
 ax1.set_title("Anionic", fontsize=30)
 ax1.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
+ax1.set_xticklabels(ax1.get_xticks(), fontsize=18)
+ax2.set_xticklabels(ax2.get_xticks(), fontsize=18)
+ax3.set_xticklabels(ax3.get_xticks(), fontsize=18)
+
 #Save the figure
 plt.savefig("bindingenergy.png", dpi=500)
