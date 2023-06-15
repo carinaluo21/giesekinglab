@@ -42,7 +42,7 @@ ax3.set_title("Cationic")
 ax3.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
 ax2.scatter(number_of_atoms_neutral, binding_energy_neutral)
-ax2.set_xlabel("Number of Atoms")
+ax2.set_xlabel("Number of Atoms", fontsize=18)
 ax2.set_title("Neutral")
 ax2.set_xticks(range(min(number_of_atoms_positive), max(number_of_atoms_positive)+1, 1))
 
