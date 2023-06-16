@@ -22,8 +22,9 @@ for key, value in data.items():
 	y = [value[1] for value in data[key]]
 	plt.scatter(x, y, color="royalblue")
 	plt.scatter(0,0, color="royalblue")
-	plt.title(f"{key[0]} vibrational mode {key[1]}")
-	plt.xlabel("Displacement (\u212B)")
-	plt.ylabel("Displacement Energy (eV)")
+	plt.xlabel("Displacement (\u212B)", fontsize=18)
+	plt.ylabel("Displacement Energy (eV)", fontsize=18)
+	plt.xticks(fontsize=14)
+	plt.yticks(fontsize=14)
 	plt.savefig(f"{key[0]}_{key[1]}")
 	plt.clf()
