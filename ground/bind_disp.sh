@@ -54,7 +54,7 @@ do
 
 		#For neutral clusters, output all the binding energies per atom to a file
 		if [ "$charge" = "0" ]; then
-        		echo $n $bindingenergyperatomineV >> bindingenergy_neutralclusters.out
+        		echo $n $logfile $bindingenergyperatomineV >> bindingenergy_neutralclusters.out
 
 		#For anionic clusters, output all the binding energies per atom to a file
 		elif [ "$charge" = "-" ]; then
