@@ -16,17 +16,6 @@ with open("displacementenergy.out", "r") as file:
 			else:
 				data[key] = [(displacement, displacement_energy)]
 
-#testx = [tup[0] for tup in data['Au2_-1_a', 1]]
-#testy = [tup[1] for tup in data['Au2_-1_a', 1]]
-#plt.scatter(testx, testy, color="royalblue")
-#plt.scatter(0,0, color="royalblue")
-#plt.title(f"Au2_-1_a vibrational mode 1")
-#plt.xlabel("Displacement (\u212B)")
-#plt.ylabel("Displacement Energy (eV)")
-#plt.savefig(f"Au2_-1_a_1")
-
-print(data.items())
-
 #Create a scatter plot
 for key, value in data.items():
 	x = [value[0] for value in data[key]]
