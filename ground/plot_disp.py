@@ -20,6 +20,7 @@ with open("displacementenergy.out", "r") as file:
 for key, value in data.items():
 	x = [value[0] for value in data[key]]
 	y = [value[1] for value in data[key]]
+	plt.figure(figsize=(8, 6))
 	plt.scatter(x, y, color="royalblue")
 	plt.scatter(0,0, color="royalblue")
 	plt.xlabel("Displacement (\u212B)", fontsize=18)
