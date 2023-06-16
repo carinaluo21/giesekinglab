@@ -31,7 +31,7 @@ fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 5))
 # Plot data in the first subplot
 ax1.scatter(neg_atom_num, neg_isom_energy, color="red", label="Anionic")
 ax1.set_xlabel('Atoms')
-ax1.set_ylabel('Relative Energy of Structural Isomers (eV)')
+ax1.set_ylabel('Relative Isomeric Energy (eV)')
 ax1.set_xticks(range(min(neg_atom_num), max(neg_atom_num) + 1))
 ax1.legend()
 
