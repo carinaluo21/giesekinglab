@@ -29,3 +29,4 @@ for key, value in data.items():
 	plt.yticks(fontsize=14)
 	plt.savefig(f"{key[0]}_{key[1]}")
 	plt.clf()
+	plt.close()
