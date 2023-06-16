@@ -94,7 +94,7 @@ while IFS= read -r line; do
         echo $geo $mode $displacement $displacement_energy >> displacementenergy.out
 done < fordisplacementenergy.out
 
-grep -v "0.0" "displacementenergy.out" > "displacementenergy.out.temp"
+grep -v "0.0 0" "displacementenergy.out" > "displacementenergy.out.temp"
 mv "displacementenergy.out.temp" "displacementenergy.out"
 
 
