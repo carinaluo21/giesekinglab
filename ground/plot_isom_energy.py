@@ -32,18 +32,21 @@ fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4))
 ax1.scatter(neg_atom_num, neg_isom_energy, color="red", label="Anionic")
 ax1.set_xlabel('Atoms')
 ax1.set_ylabel('Relative Energy of Structural Isomers (eV)')
+ax1.set_xticks(range(min(neg_atom_num), max(neg_atom_num) + 1))
 ax1.legend()
 
 # Plot data in the second subplot
 ax2.scatter(neutral_atom_num, neutral_isom_energy, color="blue", label="Neutral")
 ax2.set_xlabel('Atoms')
 ax2.set_ylabel('Relative Energy of Structural Isomers (eV)')
+ax2.set_xticks(range(min(neutral_atom_num), max(neutral_atom_num) + 1))
 ax2.legend()
 
 # Plot data in the third subplot
 ax3.scatter(pos_atom_num, pos_isom_energy, color="green", label="Cationic")
 ax3.set_xlabel('Atoms')
 ax3.set_ylabel('Relative Energy of Structural Isomers (eV)')
+ax3.set_xticks(range(min(pos_atom_num), max(pos_atom_num) + 1))
 ax3.legend()
 
 # Save the plot
