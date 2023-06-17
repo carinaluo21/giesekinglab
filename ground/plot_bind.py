@@ -59,6 +59,10 @@ ax1.set_yticklabels(ax1.get_yticks(), fontsize=18)
 ax2.set_yticklabels(ax2.get_yticks(), fontsize=18)
 ax3.set_yticklabels(ax3.get_yticks(), fontsize=18)
 
+ax1.text(0, 1.05, '(a)', transform=ax1.transAxes, fontsize=12, fontweight='normal', va='top')
+ax2.text(0, 1.05, '(b)', transform=ax2.transAxes, fontsize=12, fontweight='normal', va='top')
+ax3.text(0, 1.05, '(c)', transform=ax3.transAxes, fontsize=12, fontweight='normal', va='top')
+
 plt.subplots_adjust(left=0.10, right=0.95, bottom=0.1, top=0.9)
 plt.savefig("bindingenergy.png", dpi=500)
 plt.show()
