@@ -11,12 +11,12 @@ read output_file
 while IFS= read -r line; do
     logfile=$(echo "$line" | cut -d' ' -f1)
     # Check if the line already exists in the temporary file
-    if grep -q "$logfile" "tmp"; then
+    if grep -q "$logfile" $input_file; then
         continue  # Skip duplicate lines
     else
         atom_num=$(echo "$logfile" | cut -c3)
         charge=$(echo "$logfile" | cut -c5)
         echo "$logfile" "$atom_num" "$charge" >> $output_file
     fi
-done < $input_file
+done 
 
