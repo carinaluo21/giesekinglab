@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#Make a temporary file
-touch tmp
-
 #Read in the input and output file names
 echo "What is your input file? Probably fordisplacementenergy.out"
 read input_file
