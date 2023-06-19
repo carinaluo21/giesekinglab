@@ -16,7 +16,7 @@ while IFS= read -r line; do
     else
         atom_num=$(echo "$logfile" | cut -c3)
         charge=$(echo "$logfile" | cut -c5)
-        echo "$logfile" "$atom_num" "$charge" >> output_file
+        echo "$logfile" "$atom_num" "$charge" >> $output_file
     fi
-done < input_file
+done < $input_file
 
