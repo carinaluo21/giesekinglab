@@ -77,7 +77,7 @@ elif deg_orb == 2:
 else:
 	print("There is an error.")
 
-result_file=str(input("What file do you want to write the combined wavefunction values to?"))
+result_file=prefix + orbital1 + orbital2 + orbital3 + ".cub"
 
 with open(result_file, 'a') as file:
     line_count = 0
