@@ -5,7 +5,6 @@ prefix=str(input("What is your prefix?"))
 	
 if deg_orb >= 1:
 	orbital1=str(input("Your first orbital is"))
-	print(orbital1)
 	filename1=prefix + orbital1 + ".cub"
 	print(filename1)
 
@@ -28,7 +27,6 @@ if deg_orb >= 1:
 
 if deg_orb >= 2:
 	orbital2=str(input("Your second orbital is"))
-	print(orbital2)
 	filename2=prefix + orbital2 + ".cub"
 	print(filename2)
 	
@@ -51,7 +49,6 @@ if deg_orb >= 2:
 
 if deg_orb >= 3:
 	orbital3=str(input("Your third orbital is"))
-	print(orbital3)
 	filename3=prefix + orbital3 + ".cub"
 	print(filename3)
 	
