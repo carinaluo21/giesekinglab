@@ -2,9 +2,11 @@ import math
 
 deg_orb=int(input("How many degenerate orbitals are there?"))
 prefix=str(input("What is your prefix?"))
-	
+orbital1=str(input("Your first orbital is"))
+orbital2=str(input("Your second orbital is"))
+orbital3=str(input("Your third orbital is"))
+
 if deg_orb >= 1:
-	orbital1=str(input("Your first orbital is"))
 	filename1=prefix + orbital1 + ".cub"
 	print(filename1)
 
@@ -26,7 +28,6 @@ if deg_orb >= 1:
 				wavefunction_values_1.extend(wavefunction_value)
 
 if deg_orb >= 2:
-	orbital2=str(input("Your second orbital is"))
 	filename2=prefix + orbital2 + ".cub"
 	print(filename2)
 	
@@ -48,7 +49,6 @@ if deg_orb >= 2:
 				wavefunction_values_2.extend(wavefunction_value)
 
 if deg_orb >= 3:
-	orbital3=str(input("Your third orbital is"))
 	filename3=prefix + orbital3 + ".cub"
 	print(filename3)
 	
