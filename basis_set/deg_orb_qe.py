@@ -5,20 +5,20 @@ prefix=str(input("What is your prefix?"))
 	
 if deg_orb >= 1:
 	orbital1=str(input("Your first orbital is"))
-        print(orbital1)
+	print(orbital1)
 	filename1=prefix + orbital1 + ".cub"
 	print(filename1)
 
 	line_number = -1
 	wavefunction_values_1 = []
 
-	with open(filename, 'r') as file:
+	with open(filename1, 'r') as file:
 		for num, line in enumerate(file, start=1):
 			fields = line.split()
 			if len(fields) == 6:
 				line_number = num
 				break
-	with open(filename, 'r') as file:
+	with open(filename1, 'r') as file:
 		for current_line, line in enumerate(file, start=1):
 			if current_line >= line_number:
 				values = line.strip().split()
@@ -34,14 +34,14 @@ if deg_orb >= 2:
 	
 	line_number = -1
 	wavefunction_values_2 = []
-	with open(filename, 'r') as file:
+	with open(filename2, 'r') as file:
 		for num, line in enumerate(file, start=1):
 			fields = line.split()
 			if len(fields) == 6:
 				line_number = num
 				break
 
-	with open(filename, 'r') as file:
+	with open(filename2, 'r') as file:
 		for current_line, line in enumerate(file, start=1):
 			if current_line >= line_number:
 				values = line.strip().split()
@@ -50,18 +50,22 @@ if deg_orb >= 2:
 				wavefunction_values_2.extend(wavefunction_value)
 
 if deg_orb >= 3:
-	filename=input("What is your file name?")
+	orbital3=str(input("Your third orbital is"))
+        print(orbital3)
+	filename3=prefix + orbital3 + ".cub"
+	print(filename3)
+	
 	line_number = -1
 	wavefunction_values_3 = []
 
-	with open(filename, 'r') as file:
+	with open(filename3, 'r') as file:
 		for num, line in enumerate(file, start=1):
 			fields = line.split()
 			if len(fields) == 6:
 				line_number = num
 				break
 
-	with open(filename, 'r') as file:
+	with open(filename3, 'r') as file:
 		for current_line, line in enumerate(file, start=1):
 			if current_line >= line_number:
 				values = line.strip().split()
