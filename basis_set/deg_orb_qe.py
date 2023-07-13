@@ -6,8 +6,8 @@ prefix=str(input("What is your prefix?"))
 if deg_orb >= 1:
 	orbital1=str(input("Your first orbital is"))
         print(orbital1)
-	filename=prefix + orbital1 + ".cub"
-	print(filename)
+	filename1=prefix + orbital1 + ".cub"
+	print(filename1)
 
 	line_number = -1
 	wavefunction_values_1 = []
@@ -27,7 +27,11 @@ if deg_orb >= 1:
 				wavefunction_values_1.extend(wavefunction_value)
 
 if deg_orb >= 2:
-	filename=input("What is your file name?")
+	orbital2=str(input("Your second orbital is"))
+        print(orbital2)
+	filename2=prefix + orbital2 + ".cub"
+	print(filename2)
+	
 	line_number = -1
 	wavefunction_values_2 = []
 	with open(filename, 'r') as file:
