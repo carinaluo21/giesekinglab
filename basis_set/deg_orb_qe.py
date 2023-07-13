@@ -1,9 +1,13 @@
 import math
 
 deg_orb=int(input("How many degenerate orbitals are there?"))
-
+prefix=str(input("What is your prefix?"))
+	
 if deg_orb >= 1:
-	filename=input("What is your file name?")
+	orbital1=str(input("Your first orbital is"))
+        print(orbital1)
+	filename=prefix + orbital1 + ".cub"
+	print(filename)
 
 	line_number = -1
 	wavefunction_values_1 = []
