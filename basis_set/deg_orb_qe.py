@@ -13,6 +13,8 @@ with open(filename1, 'r') as file:
 		for num, line in enumerate(file, start=1):
 			fields = line.split()
 			if len(fields) == 6:
+				break
+			if len(fields) < 6:
 				with open(result_file, 'a') as file:
 					file.write(line)
 
