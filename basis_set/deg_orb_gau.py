@@ -19,7 +19,7 @@ if deg_orb >= 1:
 				break
 
 
-	with open(filename, 'r') as file:
+	with open(filename1, 'r') as file:
 		for current_line, line in enumerate(file, start=1):
                 	if current_line >= line_number:
                         	values = line.strip().split()
@@ -41,7 +41,7 @@ if deg_orb >= 2:
                                 break
 
 
-        with open(filename, 'r') as file:
+        with open(filename2, 'r') as file:
                 for current_line, line in enumerate(file, start=1):
                         if current_line >= line_number:
                                 values = line.strip().split()
@@ -63,7 +63,7 @@ if deg_orb >= 3:
                                 break
 
 
-        with open(filename, 'r') as file:
+        with open(filename3, 'r') as file:
                 for current_line, line in enumerate(file, start=1):
                         if current_line >= line_number:
                                 values = line.strip().split()
