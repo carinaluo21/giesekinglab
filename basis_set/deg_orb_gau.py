@@ -6,7 +6,6 @@ orbital3=str(input("Your third orbital is"))
 
 if deg_orb >= 1:
 	filename1=prefix + orbital1 + ".cub"
-	print(filename1)
 
 	line_number = -1
 	wavefunction_values_1 = []
@@ -28,7 +27,6 @@ if deg_orb >= 1:
 
 if deg_orb >= 2:
         filename2=prefix + orbital2 + ".cub"
-	print(filename2)
 
         line_number = -1
         wavefunction_values_2 = []
@@ -50,7 +48,6 @@ if deg_orb >= 2:
 
 if deg_orb >= 3:
         filename3=prefix + orbital3 + ".cub"
-	print(filename3)
 
         line_number = -1
         wavefunction_values_3 = []
