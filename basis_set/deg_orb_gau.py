@@ -3,6 +3,16 @@ prefix=str(input("What is your prefix?"))
 orbital1=str(input("Your first orbital is"))
 orbital2=str(input("Your second orbital is"))
 orbital3=str(input("Your third orbital is"))
+result_file=prefix + orbital1 + orbital2 + orbital3 + ".cub"
+
+with open(filename1, 'r') as file:
+		for num, line in enumerate(file, start=1):
+			fields = line.split()
+			if len(fields) == 6:
+				break
+			if len(fields) < 6:
+				with open(result_file, 'a') as file:
+					file.write(line)
 
 if deg_orb >= 1:
 	filename1=prefix + orbital1 + ".cub"
@@ -73,8 +83,6 @@ elif deg_orb == 2:
 	wavefunction_values_combined = [wavefunction_values_1[i] + wavefunction_values_2[i] for i in range(len(wavefunction_values_1))]
 else:
 	print("Something is wrong")
-
-result_file=prefix + orbital1 + orbital2 + orbital3 + ".cub"
 
 with open(result_file, 'a') as file:
     line_count = 0
