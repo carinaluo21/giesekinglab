@@ -4,6 +4,7 @@ orbital1=str(input("Your first orbital is"))
 orbital2=str(input("Your second orbital is"))
 orbital3=str(input("Your third orbital is"))
 result_file=prefix + orbital1 + orbital2 + orbital3 + ".cub"
+filename1=prefix + orbital1 + ".cub"
 
 with open(filename1, 'r') as file:
 		for num, line in enumerate(file, start=1):
