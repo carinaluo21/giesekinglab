@@ -1,12 +1,17 @@
 deg_orb=int(input("How many degenerate orbitals are there?"))
+prefix=str(input("What is your prefix?"))
+orbital1=str(input("Your first orbital is"))
+orbital2=str(input("Your second orbital is"))
+orbital3=str(input("Your third orbital is"))
 
 if deg_orb >= 1:
-	filename=input("What is your file name?")
+	filename1=prefix + orbital1 + ".cub"
+	print(filename1)
 
 	line_number = -1
 	wavefunction_values_1 = []
 
-	with open(filename, 'r') as file:
+	with open(filename1, 'r') as file:
 		for num, line in enumerate(file, start=1):
 			fields = line.split()
 			if len(fields) == 6:
@@ -22,12 +27,13 @@ if deg_orb >= 1:
                         	wavefunction_values_1.extend(wavefunction_value)
 
 if deg_orb >= 2:
-        filename=input("What is your file name?")
+        filename2=prefix + orbital2 + ".cub"
+	print(filename2)
 
         line_number = -1
         wavefunction_values_2 = []
 
-        with open(filename, 'r') as file:
+        with open(filename2, 'r') as file:
                 for num, line in enumerate(file, start=1):
                         fields = line.split()
                         if len(fields) == 6:
@@ -43,12 +49,13 @@ if deg_orb >= 2:
                                 wavefunction_values_2.extend(wavefunction_value)
 
 if deg_orb >= 3:
-        filename=input("What is your file name?")
+        filename3=prefix + orbital3 + ".cub"
+	print(filename3)
 
         line_number = -1
         wavefunction_values_3 = []
 
-        with open(filename, 'r') as file:
+        with open(filename3, 'r') as file:
                 for num, line in enumerate(file, start=1):
                         fields = line.split()
                         if len(fields) == 6:
@@ -70,9 +77,9 @@ elif deg_orb == 2:
 else:
 	print("Something is wrong")
 
-output_file=input("What do you want the combined cube file to be called?")
+result_file=prefix + orbital1 + orbital2 + orbital3 + ".cub"
 
-with open(output_file, 'a') as file:
+with open(result_file, 'a') as file:
     line_count = 0
     for i, number in enumerate(wavefunction_values_combined, 1):
         file.write(str(number))
